@@ -12,7 +12,7 @@ public enum TextValidationRule: ValidationRule {
     private enum Constants {
         
         static let predicateFormat = "SELF MATCHES %@"
-        static let specialCharactersRegex = ".*[^A-Za-z0-9].*"
+        static let specialCharactersRegex = ".*[^A-Za-z0-9 ].*"
         static let recurringPincodeRegex = "([0-9])\\1\\1\\1"
         static let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     }
@@ -29,8 +29,12 @@ public enum TextValidationRule: ValidationRule {
     case atLeastOneSpecialCharacter
     case noSpecialCharacters
     case email
-    case pincode
+    case notRecurringPincode
     case regex(String)
+    
+    public var errorMessage: String {
+        return ""
+    }
     
     public func check(value: String) -> Bool {
         switch self {
@@ -58,8 +62,8 @@ public enum TextValidationRule: ValidationRule {
             return checkNoSpecialCharacters(value)
         case .email:
             return checkEmail(value)
-        case .pincode:
-            return checkPincode(value)
+        case .notRecurringPincode:
+            return checkNotRecurringPincode(value)
         case .regex(let regex):
             return checkRegex(value, regex: regex)
         }
@@ -114,7 +118,7 @@ public enum TextValidationRule: ValidationRule {
         return emailPredicate.evaluate(with: value)
     }
     
-    private func checkPincode(_ value: String) -> Bool {
+    private func checkNotRecurringPincode(_ value: String) -> Bool {
         return value.range(of: Constants.recurringPincodeRegex, options: .regularExpression) == nil
     }
     

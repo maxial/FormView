@@ -19,7 +19,7 @@ public struct FormView<Content: View>: View {
         alignment: HorizontalAlignment = .center,
         spacing: CGFloat = .zero,
         showsIndicators: Bool = false,
-        focusIndex: Int64? = 0,
+        focusIndex: Int64? = .zero,
         @ViewBuilder content: () -> Content
     ) {
         self.alignment = alignment

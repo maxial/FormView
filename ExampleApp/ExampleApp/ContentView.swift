@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         FormView(alignment: .leading) {
             FormField("Name", text: $name, rules: [.lettersOnly]) { failedRules in
-//                print(failedRules)
+                print(failedRules)
             }
             Text("text")
             FormField("Surname", text: $surname, rules: [.lettersOnly]) { failedRules in
@@ -30,6 +30,11 @@ struct ContentView: View {
             Text("text")
         }
     }
+}
+
+extension TextValidationRule {
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
