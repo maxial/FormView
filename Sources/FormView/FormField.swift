@@ -11,7 +11,6 @@ public struct FormField: View {
     
     private var title: String = ""
     @ObservedObject private var validator: Validator<String, TextValidationRule>
-    
     private var index: Int64? = nil
     
     public init(

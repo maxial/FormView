@@ -15,7 +15,7 @@ struct ContentView: View {
     @State var address: String = ""
     
     var body: some View {
-        FormView {
+        FormView(alignment: .leading) {
             FormField("Name", text: $name, rules: [.lettersOnly]) { failedRules in
 //                print(failedRules)
             }

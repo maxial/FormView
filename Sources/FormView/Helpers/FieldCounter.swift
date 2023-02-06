@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FieldCounter {
     
-    static var _value: Int64 = .zero
+    static var _value: Int64 = -1
     
     var value: Int64 { FieldCounter._value }
     

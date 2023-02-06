@@ -15,7 +15,7 @@ public enum ValidationResult<T: Hashable> {
 
 public typealias ResultCompletion<T> = (ValidationResult<T>) -> Void where T: Hashable
 
-public class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T == V.Value {
+final class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T == V.Value {
     
     @Binding private var bindValue: T
     private let rules: [V]
@@ -26,7 +26,7 @@ public class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T
         didSet { bindValue = value }
     }
     
-    public init(
+    init(
         value: Binding<T>,
         rules: [V],
         resultCompletion: ResultCompletion<T>? = nil
@@ -37,7 +37,7 @@ public class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T
         self.value = value.wrappedValue
     }
     
-    public func validate(newValue: T? = nil) {
+    func validate(newValue: T? = nil) {
         let failedRules = rules
             .filter { $0.check(value: newValue ?? value) == false }
             .map { AnyValidationRule($0) }
