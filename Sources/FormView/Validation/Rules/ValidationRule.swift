@@ -10,7 +10,5 @@ import Foundation
 public protocol ValidationRule: Equatable {
     associatedtype Value: Hashable
     
-    var errorMessage: String { get }
-    
     func check(value: Value) -> Bool
 }

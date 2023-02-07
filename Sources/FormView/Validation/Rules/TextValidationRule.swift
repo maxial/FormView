@@ -32,10 +32,6 @@ public enum TextValidationRule: ValidationRule {
     case notRecurringPincode
     case regex(String)
     
-    public var errorMessage: String {
-        return ""
-    }
-    
     public func check(value: String) -> Bool {
         switch self {
         case .notEmpty:
