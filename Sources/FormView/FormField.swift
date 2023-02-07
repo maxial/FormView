@@ -21,7 +21,7 @@ public struct FormField: View {
     ) {
         self.title = title
         self.validator = Validator(value: text, rules: rules, resultCompletion: resultCompletion)
-        self.index = FieldCounter().value
+        self.index = GlobalFieldCounter().value
     }
     
     public var body: some View {

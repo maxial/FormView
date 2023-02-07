@@ -31,7 +31,7 @@ public struct FormView<Content: View>: View {
     
     public var body: some View {
         ScrollView(.vertical, showsIndicators: showsIndicators) {
-            ExecResetFieldCounter()
+            ExecResetGlobalFieldCounter()
             GetAccessToViews(in: content) { views in
                 makeVStackView(views: views)
             }

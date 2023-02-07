@@ -14,7 +14,7 @@ final class ValidatorTests: XCTestCase {
     
     @State var value: String = "555555"
     
-    func testCheckValidatorFailedStatus() throws {
+    func testValidator() throws {
         var failedRules: [TextValidationRule] = []
         var isPassed = false
         
