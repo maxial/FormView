@@ -17,7 +17,7 @@ public struct FormField: View {
         _ title: String = "",
         text: Binding<String>,
         rules: [TextValidationRule] = [],
-        resultCompletion: ResultCompletion<String>? = nil
+        resultCompletion: ResultCompletion<TextValidationRule>? = nil
     ) {
         self.title = title
         self.validator = Validator(value: text, rules: rules, resultCompletion: resultCompletion)

@@ -7,19 +7,19 @@
 
 import SwiftUI
 
-public enum ValidationResult<T: Hashable> {
+public enum ValidationResult<V: ValidationRule> {
     
     case passed
-    case failed(rules: [AnyValidationRule<T>])
+    case failed(rules: [V])
 }
 
-public typealias ResultCompletion<T> = (ValidationResult<T>) -> Void where T: Hashable
+public typealias ResultCompletion<V> = (ValidationResult<V>) -> Void where V: ValidationRule
 
 final class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T == V.Value {
     
     @Binding private var bindValue: T
     private let rules: [V]
-    private let resultCompletion: ResultCompletion<T>?
+    private let resultCompletion: ResultCompletion<V>?
     
     @Published var value: T {
         willSet { validate(newValue: newValue) }
@@ -29,7 +29,7 @@ final class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T 
     init(
         value: Binding<T>,
         rules: [V],
-        resultCompletion: ResultCompletion<T>? = nil
+        resultCompletion: ResultCompletion<V>? = nil
     ) {
         self.rules = rules
         self.resultCompletion = resultCompletion
@@ -38,9 +38,7 @@ final class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T 
     }
     
     func validate(newValue: T? = nil) {
-        let failedRules = rules
-            .filter { $0.check(value: newValue ?? value) == false }
-            .map { AnyValidationRule($0) }
+        let failedRules = rules.filter { $0.check(value: newValue ?? value) == false }
         resultCompletion?(failedRules.isEmpty ? .passed : .failed(rules: failedRules))
     }
 }

@@ -1,7 +1,14 @@
+//
+//  TextValidationRuleTests.swift
+//
+//
+//  Created by Maxim Aliev on 07.02.2023.
+//
+
 import XCTest
 @testable import FormView
 
-final class FormViewTests: XCTestCase {
+final class TextValidationRuleTests: XCTestCase {
     
     func testCheckNotEmpty() throws {
         try testCheck(textRule: .notEmpty, trueString: "Not empty", falseString: "")
