@@ -12,29 +12,36 @@ struct ContentView: View {
     
     @State var name: String = ""
     @State var surname: String = ""
-    @State var address: String = ""
+    @State var nameFieldErrorMessage: String = ""
+    @State var surnameFieldErrorMessage: String = ""
     
     var body: some View {
-        FormView(alignment: .leading) {
-            FormField("Name", text: $name, rules: [.lettersOnly]) { failedRules in
-                print(failedRules)
-            }
-            Text("text")
-            FormField("Surname", text: $surname, rules: [.lettersOnly]) { failedRules in
-//                print(failedRules)
-            }
-            Text("text")
-            FormField("Address", text: $address, rules: [.digitsOnly]) { failedRules in
-//                print(failedRules)
-            }
-            Text("text")
+        FormView(alignment: .leading, spacing: 8) {
+            FormField(
+                "Name",
+                text: $name,
+                rules: [.minLength(3)],
+                failedRules: {
+                    nameFieldErrorMessage = String.concat(
+                        strings: $0.map { $0.message }
+                    )
+                }
+            )
+            .modifier(FormFieldModifier(errorMessage: nameFieldErrorMessage))
+            
+            FormField(
+                "Surname",
+                text: $surname,
+                rules: [.maxLength(4)],
+                failedRules: {
+                    surnameFieldErrorMessage = String.concat(
+                        strings: $0.map { $0.message }
+                    )
+                }
+            )
+            .modifier(FormFieldModifier(errorMessage: surnameFieldErrorMessage))
         }
     }
-}
-
-extension TextValidationRule {
-    
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

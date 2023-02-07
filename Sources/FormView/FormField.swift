@@ -9,18 +9,27 @@ import SwiftUI
 
 public struct FormField: View {
     
-    private var title: String = ""
+    private var title: LocalizedStringKey = ""
     @ObservedObject private var validator: Validator<String, TextValidationRule>
     private var index: Int64? = nil
     
+    public var failedRules: [TextValidationRule] { validator.failedRules }
+    
     public init(
-        _ title: String = "",
+        _ title: LocalizedStringKey = "",
         text: Binding<String>,
         rules: [TextValidationRule] = [],
-        resultCompletion: ResultCompletion<TextValidationRule>? = nil
+        failedRules: (([TextValidationRule]) -> Void)? = nil
     ) {
         self.title = title
-        self.validator = Validator(value: text, rules: rules, resultCompletion: resultCompletion)
+        self.validator = Validator(value: text, rules: rules) { result in
+            switch result {
+            case .passed:
+                failedRules?([])
+            case let .failed(rules):
+                failedRules?(rules)
+            }
+        }
         self.index = GlobalFieldCounter().value
     }
     

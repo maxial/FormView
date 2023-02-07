@@ -12,6 +12,9 @@
 		426CF63C29850D1B00012FBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426CF63B29850D1B00012FBE /* Assets.xcassets */; };
 		426CF63F29850D1B00012FBE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426CF63E29850D1B00012FBE /* Preview Assets.xcassets */; };
 		426CF64929850DD400012FBE /* FormView in Frameworks */ = {isa = PBXBuildFile; productRef = 426CF64829850DD400012FBE /* FormView */; };
+		426CF64E2992393A00012FBE /* TextValidationRule+Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CF64D2992393A00012FBE /* TextValidationRule+Message.swift */; };
+		426CF65029923D6800012FBE /* String+Concat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CF64F29923D6800012FBE /* String+Concat.swift */; };
+		426CF6522992F97000012FBE /* FormFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CF6512992F97000012FBE /* FormFieldModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		426CF63E29850D1B00012FBE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		426CF64629850D9F00012FBE /* FormView */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FormView; path = ..; sourceTree = "<group>"; };
 		426CF64C29903DBC00012FBE /* Example-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Example-Info.plist"; sourceTree = "<group>"; };
+		426CF64D2992393A00012FBE /* TextValidationRule+Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextValidationRule+Message.swift"; sourceTree = "<group>"; };
+		426CF64F29923D6800012FBE /* String+Concat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Concat.swift"; sourceTree = "<group>"; };
+		426CF6512992F97000012FBE /* FormFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +65,10 @@
 			isa = PBXGroup;
 			children = (
 				426CF63729850D1A00012FBE /* ExampleApp.swift */,
+				426CF64D2992393A00012FBE /* TextValidationRule+Message.swift */,
 				426CF63929850D1A00012FBE /* ContentView.swift */,
+				426CF6512992F97000012FBE /* FormFieldModifier.swift */,
+				426CF64F29923D6800012FBE /* String+Concat.swift */,
 				426CF63B29850D1B00012FBE /* Assets.xcassets */,
 				426CF63D29850D1B00012FBE /* Preview Content */,
 			);
@@ -162,6 +171,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				426CF65029923D6800012FBE /* String+Concat.swift in Sources */,
+				426CF6522992F97000012FBE /* FormFieldModifier.swift in Sources */,
+				426CF64E2992393A00012FBE /* TextValidationRule+Message.swift in Sources */,
 				426CF63A29850D1A00012FBE /* ContentView.swift in Sources */,
 				426CF63829850D1A00012FBE /* ExampleApp.swift in Sources */,
 			);

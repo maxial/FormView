@@ -21,6 +21,8 @@ final class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T 
     private let rules: [V]
     private let resultCompletion: ResultCompletion<V>?
     
+    var failedRules: [V] = []
+    
     @Published var value: T {
         willSet { validate(newValue: newValue) }
         didSet { bindValue = value }
@@ -38,7 +40,7 @@ final class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T 
     }
     
     func validate(newValue: T? = nil) {
-        let failedRules = rules.filter { $0.check(value: newValue ?? value) == false }
+        failedRules = rules.filter { $0.check(value: newValue ?? value) == false }
         resultCompletion?(failedRules.isEmpty ? .passed : .failed(rules: failedRules))
     }
 }

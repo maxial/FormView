@@ -15,7 +15,6 @@ struct GlobalFieldCounter {
     
     init() {
         GlobalFieldCounter._value += 1
-        print(value)
     }
     
     static func reset() {
