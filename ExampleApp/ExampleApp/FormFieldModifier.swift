@@ -14,12 +14,23 @@ struct FormFieldModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 14))
-            .border(errorMessage.isEmpty ? .clear : .red)
-            .padding()
+            .frame(height: 40)
+            .overlay {
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(errorMessage.isEmpty ? Color.secondary : .red, lineWidth: 1)
+            }
+            .padding([.leading, .trailing], 20)
+            .padding(.top, 4)
         if errorMessage.isEmpty == false {
             Text(errorMessage)
                 .font(.system(size: 9))
+                .frame(height: 20)
                 .foregroundColor(.red)
+                .padding([.leading, .trailing], 20)
+                .padding(.top, 4)
+        } else {
+            Color.clear
+                .frame(height: 24)
         }
     }
 }

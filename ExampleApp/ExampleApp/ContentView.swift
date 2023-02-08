@@ -16,7 +16,7 @@ struct ContentView: View {
     @State var surnameFieldErrorMessage: String = ""
     
     var body: some View {
-        FormView(alignment: .leading, spacing: 8) {
+        FormView(alignment: .leading) {
             FormField(
                 "Name",
                 text: $name,
