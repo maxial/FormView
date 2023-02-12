@@ -17,17 +17,33 @@ struct ContentView: View {
     
     var body: some View {
         FormView(alignment: .leading) {
-            FormField(
-                "Name",
-                text: $name,
-                rules: [.minLength(3)],
-                failedRules: {
-                    nameFieldErrorMessage = String.concat(
-                        strings: $0.map { $0.message }
-                    )
-                }
-            )
-            .modifier(FormFieldModifier(errorMessage: nameFieldErrorMessage))
+            HStack {
+                Color.red
+                    .frame(width: 40)
+                FormField(
+                    "Name",
+                    text: $name,
+                    rules: [.minLength(3)],
+                    failedRules: {
+                        nameFieldErrorMessage = String.concat(
+                            strings: $0.map { $0.message }
+                        )
+                    }
+                )
+                .modifier(FormFieldModifier(errorMessage: nameFieldErrorMessage))
+                
+                FormField(
+                    "Name",
+                    text: $name,
+                    rules: [.minLength(3)],
+                    failedRules: {
+                        nameFieldErrorMessage = String.concat(
+                            strings: $0.map { $0.message }
+                        )
+                    }
+                )
+                .modifier(FormFieldModifier(errorMessage: nameFieldErrorMessage))
+            }
             
             FormField(
                 "Surname",

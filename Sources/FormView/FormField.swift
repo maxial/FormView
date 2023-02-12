@@ -9,9 +9,11 @@ import SwiftUI
 
 public struct FormField: View {
     
+    @Environment(\.isFocused) var isFocused
+    
     private var title: LocalizedStringKey = ""
     @ObservedObject private var validator: Validator<String, TextValidationRule>
-    private var index: Int64? = nil
+    @FocusState private var isTextFieldFocused: Bool
     
     public var failedRules: [TextValidationRule] { validator.failedRules }
     
@@ -30,14 +32,36 @@ public struct FormField: View {
                 failedRules?(rules)
             }
         }
-        self.index = GlobalFieldCounter().value
     }
     
     public var body: some View {
         TextField(title, text: $validator.value)
-            .setFieldIndex(index: index)
+            .focused($isTextFieldFocused)
+//            .preference(key: FieldFocusKey.self, value: [FormFieldContainer(view: self)])
             .onAppear {
                 validator.validate()
             }
+            .onChange(of: isFocused) { newValue in
+                isTextFieldFocused = newValue
+            }
     }
 }
+
+//struct FieldFocusKey: PreferenceKey {
+//
+//    static var defaultValue: [FormFieldContainer] = []
+//
+//    static func reduce(value: inout [FormFieldContainer], nextValue: () -> [FormFieldContainer]) {
+//        value += nextValue()
+//    }
+//}
+//
+//struct FormFieldContainer: Equatable {
+//
+//    let id = UUID().uuidString
+//    let view: FormField
+//
+//    static func == (lhs: FormFieldContainer, rhs: FormFieldContainer) -> Bool {
+//        return lhs.id == rhs.id
+//    }
+//}
