@@ -9,13 +9,15 @@ import SwiftUI
 
 public struct FormField: View {
     
-    @Environment(\.isFocused) var isFocused
+    @Environment(\.focusFieldIndex) var focusFieldIndex
     
     private var title: LocalizedStringKey = ""
     @ObservedObject private var validator: Validator<String, TextValidationRule>
-    @FocusState private var isTextFieldFocused: Bool
+    private let fieldIndex: Int
     
-    public var failedRules: [TextValidationRule] { validator.failedRules }
+    @FocusState private var isFocused: Bool
+    
+    private var failedRules: [TextValidationRule] { validator.failedRules }
     
     public init(
         _ title: LocalizedStringKey = "",
@@ -32,36 +34,21 @@ public struct FormField: View {
                 failedRules?(rules)
             }
         }
+        self.fieldIndex = Int(round(GlobalFieldIndexer().fieldIndex))
     }
     
     public var body: some View {
-        TextField(title, text: $validator.value)
-            .focused($isTextFieldFocused)
-//            .preference(key: FieldFocusKey.self, value: [FormFieldContainer(view: self)])
-            .onAppear {
-                validator.validate()
+        TextField(title, text: $validator.value, onEditingChanged: { changed in
+            if changed {
+                GlobalFieldIndexer.setEditableFieldIndex(fieldIndex)
             }
-            .onChange(of: isFocused) { newValue in
-                isTextFieldFocused = newValue
-            }
+        })
+        .focused($isFocused)
+        .onChange(of: focusFieldIndex) { newValue in
+            isFocused = Int(round(newValue)) == fieldIndex
+        }
+        .onAppear {
+            validator.validate()
+        }
     }
 }
-
-//struct FieldFocusKey: PreferenceKey {
-//
-//    static var defaultValue: [FormFieldContainer] = []
-//
-//    static func reduce(value: inout [FormFieldContainer], nextValue: () -> [FormFieldContainer]) {
-//        value += nextValue()
-//    }
-//}
-//
-//struct FormFieldContainer: Equatable {
-//
-//    let id = UUID().uuidString
-//    let view: FormField
-//
-//    static func == (lhs: FormFieldContainer, rhs: FormFieldContainer) -> Bool {
-//        return lhs.id == rhs.id
-//    }
-//}

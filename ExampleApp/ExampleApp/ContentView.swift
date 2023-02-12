@@ -11,12 +11,14 @@ import FormView
 struct ContentView: View {
     
     @State var name: String = ""
+    @State var name2: String = ""
     @State var surname: String = ""
     @State var nameFieldErrorMessage: String = ""
     @State var surnameFieldErrorMessage: String = ""
     
     var body: some View {
         FormView(alignment: .leading) {
+            
             HStack {
                 Color.red
                     .frame(width: 40)
@@ -33,8 +35,8 @@ struct ContentView: View {
                 .modifier(FormFieldModifier(errorMessage: nameFieldErrorMessage))
                 
                 FormField(
-                    "Name",
-                    text: $name,
+                    "Name2",
+                    text: $name2,
                     rules: [.minLength(3)],
                     failedRules: {
                         nameFieldErrorMessage = String.concat(
@@ -57,6 +59,7 @@ struct ContentView: View {
             )
             .modifier(FormFieldModifier(errorMessage: surnameFieldErrorMessage))
         }
+        .background(Color(red: 245/255.0, green: 246/255.0, blue: 250/255.0))
     }
 }
 

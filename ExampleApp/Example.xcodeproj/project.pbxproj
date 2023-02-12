@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4211F22E2999730F00D13FD0 /* MyFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211F22D2999730F00D13FD0 /* MyFormField.swift */; };
 		426CF63829850D1A00012FBE /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CF63729850D1A00012FBE /* ExampleApp.swift */; };
 		426CF63A29850D1A00012FBE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CF63929850D1A00012FBE /* ContentView.swift */; };
 		426CF63C29850D1B00012FBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426CF63B29850D1B00012FBE /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4211F22D2999730F00D13FD0 /* MyFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFormField.swift; sourceTree = "<group>"; };
 		426CF63429850D1A00012FBE /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		426CF63729850D1A00012FBE /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		426CF63929850D1A00012FBE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				426CF63729850D1A00012FBE /* ExampleApp.swift */,
 				426CF64D2992393A00012FBE /* TextValidationRule+Message.swift */,
 				426CF63929850D1A00012FBE /* ContentView.swift */,
+				4211F22D2999730F00D13FD0 /* MyFormField.swift */,
 				426CF6512992F97000012FBE /* FormFieldModifier.swift */,
 				426CF64F29923D6800012FBE /* String+Concat.swift */,
 				426CF63B29850D1B00012FBE /* Assets.xcassets */,
@@ -173,6 +176,7 @@
 			files = (
 				426CF65029923D6800012FBE /* String+Concat.swift in Sources */,
 				426CF6522992F97000012FBE /* FormFieldModifier.swift in Sources */,
+				4211F22E2999730F00D13FD0 /* MyFormField.swift in Sources */,
 				426CF64E2992393A00012FBE /* TextValidationRule+Message.swift in Sources */,
 				426CF63A29850D1A00012FBE /* ContentView.swift in Sources */,
 				426CF63829850D1A00012FBE /* ExampleApp.swift in Sources */,
@@ -232,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -286,7 +290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
