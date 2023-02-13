@@ -30,9 +30,10 @@ public struct FormView<Content: View>: View {
     
     public var body: some View {
         ScrollView(.vertical, showsIndicators: showsIndicators) {
-            SwiftUIExecutor {
-                GlobalFieldIndexer.resetFieldIndex()
-            }
+//            SwiftUIExecutor {
+//                print("Reset")
+//                GlobalFieldIndexer.resetFieldIndex()
+//            }
             content
         }
         .onSubmit {
@@ -41,6 +42,7 @@ public struct FormView<Content: View>: View {
                 newFocusFieldIndex -= 0.01
             }
             focusFieldIndex = newFocusFieldIndex
+            print("Submit", focusFieldIndex)
         }
         .environment(\.focusFieldIndex, focusFieldIndex)
     }
