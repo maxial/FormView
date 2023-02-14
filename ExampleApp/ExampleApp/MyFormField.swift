@@ -8,23 +8,20 @@
 import SwiftUI
 import FormView
 
-struct MyFormField<T>: View where T: Hashable {
+struct MyFormField: View {
     
-    private let id: T
-    private let placeholder: LocalizedStringKey
+    private let title: LocalizedStringKey
     private let text: Binding<String>
     private let rules: [TextValidationRule]
     
     @State private var failedRules: [TextValidationRule] = []
     
     init(
-        id: T,
-        placeholder: LocalizedStringKey = "",
+        _ title: LocalizedStringKey = "",
         text: Binding<String>,
         rules: [TextValidationRule] = []
     ) {
-        self.id = id
-        self.placeholder = placeholder
+        self.title = title
         self.text = text
         self.rules = rules
     }
@@ -41,18 +38,12 @@ struct MyFormField<T>: View where T: Hashable {
                         y: 3
                     )
                 ZStack {
-                    FormField(
-                        id: id,
-                        placeholder: placeholder,
-                        text: text,
-                        rules: rules,
-                        failedRules: $failedRules
-                    )
-                    .font(.system(size: 14))
-                    .foregroundColor(.black)
-                    .tint(Color.black)
-                    .frame(height: 40)
-                    .padding(.horizontal, 12)
+                    FormField(title, text: text, rules: rules, failedRules: $failedRules)
+                        .font(.system(size: 14))
+                        .foregroundColor(.black)
+                        .tint(Color.black)
+                        .frame(height: 40)
+                        .padding(.horizontal, 12)
                 }
                 .overlay {
                     RoundedRectangle(cornerRadius: 12)
@@ -64,7 +55,7 @@ struct MyFormField<T>: View where T: Hashable {
             if failedRules.isEmpty == false {
                 Text(String.concat(strings: failedRules.map { $0.message }))
                     .lineLimit(2)
-                    .font(.system(size: 9))
+                    .font(.system(size: 9, weight: .semibold))
                     .foregroundColor(.red)
             }
             

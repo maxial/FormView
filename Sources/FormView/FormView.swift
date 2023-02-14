@@ -14,7 +14,8 @@ public struct FormView<Content: View>: View {
     private let showsIndicators: Bool
     @ViewBuilder private let content: Content
     
-    @State private var focusFieldIndex: Double = .zero
+    @State private var fieldStates: [FieldState] = []
+    @State private var focusField: String = ""
     
     public init(
         alignment: HorizontalAlignment = .center,
@@ -30,20 +31,22 @@ public struct FormView<Content: View>: View {
     
     public var body: some View {
         ScrollView(.vertical, showsIndicators: showsIndicators) {
-//            SwiftUIExecutor {
-//                print("Reset")
-//                GlobalFieldIndexer.resetFieldIndex()
-//            }
             content
         }
-        .onSubmit {
-            var newFocusFieldIndex = GlobalFieldIndexer.editableFieldIndex + 1
-            if newFocusFieldIndex == focusFieldIndex {
-                newFocusFieldIndex -= 0.01
-            }
-            focusFieldIndex = newFocusFieldIndex
-            print("Submit", focusFieldIndex)
+        .onPreferenceChange(FieldStatesKey.self) { newValue in
+            fieldStates = newValue
         }
-        .environment(\.focusFieldIndex, focusFieldIndex)
+        .onSubmit {
+            focusNextField()
+        }
+        .environment(\.focusField, focusField)
+    }
+    
+    private func focusNextField() {
+        let nextIndex = (fieldStates.firstIndex { $0.isFocused } ?? -1) + 1
+        for i in 0..<fieldStates.count {
+            fieldStates[i].isFocused = i == nextIndex
+        }
+        focusField = fieldStates.first { $0.isFocused }?.id ?? ""
     }
 }

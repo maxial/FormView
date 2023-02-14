@@ -39,30 +39,26 @@ struct ContentView: View {
                 .ignoresSafeArea()
             FormView(alignment: .leading) {
                 MyFormField(
-                    id: FieldType.companyName,
-                    placeholder: "Company",
+                    "Company",
                     text: $companyName,
                     rules: [.noSpecialCharacters]
                 )
                 
                 HStack {
                     MyFormField(
-                        id: FieldType.fstEmployeeName,
-                        placeholder: "Name",
+                        "Name",
                         text: $fstEmployeeName,
                         rules: [.noSpecialCharacters]
                     )
                     .frame(width: 100)
                     MyFormField(
-                        id: FieldType.fstEmployeeAge,
-                        placeholder: "Age",
+                        "Age",
                         text: $fstEmployeeAge,
                         rules: [.digitsOnly, .maxLength(2)]
                     )
                     .frame(width: 60)
                     MyFormField(
-                        id: FieldType.fstEmployeeEmail,
-                        placeholder: "Email",
+                        "Email",
                         text: $fstEmployeeEmail,
                         rules: [.email]
                     )
@@ -70,22 +66,19 @@ struct ContentView: View {
                 
                 HStack {
                     MyFormField(
-                        id: FieldType.sndEmployeeName,
-                        placeholder: "Name",
+                        "Name",
                         text: $sndEmployeeName,
                         rules: [.noSpecialCharacters]
                     )
                     .frame(width: 100)
                     MyFormField(
-                        id: FieldType.sndEmployeeAge,
-                        placeholder: "Age",
+                        "Age",
                         text: $sndEmployeeAge,
                         rules: [.digitsOnly, .maxLength(2)]
                     )
                     .frame(width: 60)
                     MyFormField(
-                        id: FieldType.sndEmployeeEmail,
-                        placeholder: "Email",
+                        "Email",
                         text: $sndEmployeeEmail,
                         rules: [.email]
                     )
@@ -100,8 +93,7 @@ struct ContentView: View {
                 .padding(.bottom, 20)
                 
                 MyFormField(
-                    id: FieldType.companyPhone,
-                    placeholder: "Company phone",
+                    "Company phone",
                     text: $companyPhone,
                     rules: [.minLength(11), .maxLength(11), .digitsOnly]
                 )

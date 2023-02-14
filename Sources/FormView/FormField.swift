@@ -9,46 +9,34 @@ import SwiftUI
 
 public struct FormField: View {
     
-    @Environment(\.focusFieldIndex) var focusFieldIndex
+    @Environment(\.focusField) var focusField
     
-    private var placeholder: LocalizedStringKey = ""
+    private let id: String
+    private var title: LocalizedStringKey
     @ObservedObject private var validator: Validator<String, TextValidationRule>
-    private let fieldIndex: Int
     
     @FocusState private var isFocused: Bool
     
-    public init<T>(
-        id: T,
-        placeholder: LocalizedStringKey = "",
+    public init(
+        _ title: LocalizedStringKey = "",
         text: Binding<String>,
         rules: [TextValidationRule] = [],
         failedRules: Binding<[TextValidationRule]>? = nil
-    ) where T: Hashable {
-        if GlobalFieldIndexer.getIndexForField(id: id) == nil {
-            GlobalFieldIndexer.setIndexForField(id: id)
-        }
-        self.fieldIndex = GlobalFieldIndexer.getIndexForField(id: id) ?? .zero
-        self.placeholder = placeholder
+    ) {
+        self.id = UUID().uuidString
+        self.title = title
         self.validator = Validator(value: text, rules: rules, failedRules: failedRules)
-//        self.fieldIndex = Int(round(GlobalFieldIndexer().fieldIndex))
-//        print(self.fieldIndex)
     }
     
     public var body: some View {
-        TextField(placeholder, text: $validator.value, onEditingChanged: { changed in
-            if changed {
-                GlobalFieldIndexer.setEditableFieldIndex(fieldIndex)
-                print("Changed TRUE", focusFieldIndex)
+        TextField(title, text: $validator.value)
+            .focused($isFocused)
+            .onChange(of: focusField) { newValue in
+                isFocused = newValue == id
             }
-        })
-        .focused($isFocused)
-        .onChange(of: focusFieldIndex) { newValue in
-            isFocused = Int(round(newValue)) == fieldIndex
-//            print("OnChange FieldIndex", fieldIndex)
-//            print("OnChange NewFocus", newValue)
-        }
-        .onAppear {
-            validator.validate()
-        }
+            .onAppear {
+                validator.validate()
+            }
+            .preference(key: FieldStatesKey.self, value: [FieldState(id: id, isFocused: isFocused)])
     }
 }
