@@ -36,7 +36,7 @@ public struct FormView<Content: View>: View {
         .onPreferenceChange(FieldStatesKey.self) { newValue in
             fieldStates = newValue
         }
-        .onSubmit {
+        .onSubmit(of: .text) {
             focusNextField()
         }
         .environment(\.focusField, focusField)
@@ -47,6 +47,7 @@ public struct FormView<Content: View>: View {
         for i in 0..<fieldStates.count {
             fieldStates[i].isFocused = i == nextIndex
         }
-        focusField = fieldStates.first { $0.isFocused }?.id ?? ""
+        let nextField = fieldStates.first { $0.isFocused }?.id ?? ""
+        focusField = nextField == focusField ? nextField + " " : nextField
     }
 }

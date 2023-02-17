@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 public struct FormField: View {
     
@@ -20,19 +21,32 @@ public struct FormField: View {
     public init(
         _ title: LocalizedStringKey = "",
         text: Binding<String>,
-        rules: [TextValidationRule] = [],
-        failedRules: Binding<[TextValidationRule]>? = nil
+        validationRules: [TextValidationRule] = [],
+        inputRules: [TextValidationRule] = [],
+        failedValidationRules: Binding<[TextValidationRule]>? = nil
     ) {
         self.id = UUID().uuidString
         self.title = title
-        self.validator = Validator(value: text, rules: rules, failedRules: failedRules)
+        self.validator = Validator(
+            value: text,
+            validationRules: validationRules,
+            inputRules: inputRules,
+            failedValidationRules: failedValidationRules
+        )
     }
     
     public var body: some View {
         TextField(title, text: $validator.value)
             .focused($isFocused)
+            .onChange(of: validator.value) { [oldValue = validator.value] newValue in
+                if validator.checkInput(newValue: newValue).isEmpty {
+                    validator.value = newValue
+                } else {
+                    validator.value = oldValue
+                }
+            }
             .onChange(of: focusField) { newValue in
-                isFocused = newValue == id
+                isFocused = newValue.trimmingCharacters(in: .whitespaces) == id
             }
             .onAppear {
                 validator.validate()

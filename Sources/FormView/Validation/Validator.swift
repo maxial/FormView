@@ -18,8 +18,9 @@ public typealias ResultCompletion<V> = (ValidationResult<V>) -> Void where V: Va
 final class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T == V.Value {
     
     @Binding private var bindValue: T
-    private var bindFailedRules: Binding<[V]>?
-    private let rules: [V]
+    private var bindFailedValidationRules: Binding<[V]>?
+    private let validationRules: [V]
+    private let inputRules: [V]
     
     @Published var value: T {
         willSet { validate(newValue: newValue) }
@@ -28,17 +29,25 @@ final class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T 
     
     init(
         value: Binding<T>,
-        rules: [V],
-        failedRules: Binding<[V]>? = nil
+        validationRules: [V],
+        inputRules: [V],
+        failedValidationRules: Binding<[V]>? = nil
     ) {
-        self.rules = rules
+        self.validationRules = validationRules
+        self.inputRules = inputRules
         self._bindValue = value
-        self.bindFailedRules = failedRules
+        self.bindFailedValidationRules = failedValidationRules
         self.value = value.wrappedValue
     }
     
     func validate(newValue: T? = nil) {
-        let failedRules = rules.filter { $0.check(value: newValue ?? value) == false }
-        bindFailedRules?.wrappedValue = failedRules
+        let failedValidationRules = validationRules.filter {
+            $0.check(value: newValue ?? value) == false
+        }
+        bindFailedValidationRules?.wrappedValue = failedValidationRules
+    }
+    
+    func checkInput(newValue: T? = nil) -> [V] {
+        return inputRules.filter { $0.check(value: newValue ?? value) == false }
     }
 }

@@ -41,26 +41,29 @@ struct ContentView: View {
                 MyFormField(
                     "Company",
                     text: $companyName,
-                    rules: [.noSpecialCharacters]
+                    validationRules: [.noSpecialCharacters],
+                    inputRules: [.noSpecialCharacters]
                 )
                 
                 HStack {
                     MyFormField(
                         "Name",
                         text: $fstEmployeeName,
-                        rules: [.noSpecialCharacters]
+                        validationRules: [.noSpecialCharacters],
+                        inputRules: [.noSpecialCharacters]
                     )
                     .frame(width: 100)
                     MyFormField(
                         "Age",
                         text: $fstEmployeeAge,
-                        rules: [.digitsOnly, .maxLength(2)]
+                        validationRules: [.digitsOnly, .maxLength(2)],
+                        inputRules: [.digitsOnly, .maxLength(2)]
                     )
                     .frame(width: 60)
                     MyFormField(
                         "Email",
                         text: $fstEmployeeEmail,
-                        rules: [.email]
+                        validationRules: [.email]
                     )
                 }
                 
@@ -68,19 +71,21 @@ struct ContentView: View {
                     MyFormField(
                         "Name",
                         text: $sndEmployeeName,
-                        rules: [.noSpecialCharacters]
+                        validationRules: [.noSpecialCharacters],
+                        inputRules: [.noSpecialCharacters]
                     )
                     .frame(width: 100)
                     MyFormField(
                         "Age",
                         text: $sndEmployeeAge,
-                        rules: [.digitsOnly, .maxLength(2)]
+                        validationRules: [.digitsOnly, .maxLength(2)],
+                        inputRules: [.digitsOnly, .maxLength(2)]
                     )
                     .frame(width: 60)
                     MyFormField(
                         "Email",
                         text: $sndEmployeeEmail,
-                        rules: [.email]
+                        validationRules: [.email]
                     )
                 }
                 
@@ -95,7 +100,8 @@ struct ContentView: View {
                 MyFormField(
                     "Company phone",
                     text: $companyPhone,
-                    rules: [.minLength(11), .maxLength(11), .digitsOnly]
+                    validationRules: [.minLength(11), .maxLength(11), .digitsOnly],
+                    inputRules: [.maxLength(11), .digitsOnly]
                 )
             }
             .padding(.horizontal, 12)

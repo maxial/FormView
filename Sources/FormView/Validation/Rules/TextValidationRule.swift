@@ -33,6 +33,10 @@ public enum TextValidationRule: ValidationRule {
     case regex(String)
     
     public func check(value: String) -> Bool {
+        guard value.isEmpty == false || self == .notEmpty else {
+            return true
+        }
+        
         switch self {
         case .notEmpty:
             return checkNotEmpty(value)
