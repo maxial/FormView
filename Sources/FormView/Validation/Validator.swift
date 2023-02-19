@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-public enum ValidationResult<V: ValidationRule> {
-    
-    case passed
-    case failed(rules: [V])
-}
-
-public typealias ResultCompletion<V> = (ValidationResult<V>) -> Void where V: ValidationRule
-
 final class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T == V.Value {
     
     @Binding private var bindValue: T
