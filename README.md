@@ -20,6 +20,7 @@ An easy-to-use library for working with a group of **TextFields**.
 
 - [Features](#features)
 - [Usage](#usage)
+- [Example Project](#example-project)
 - [Installation](#installation)
 - [License](#license)
 
@@ -65,6 +66,10 @@ struct ContentView: View {
 `ValidationRules` are used for automatic validation of text during input. All rules that have not passed the validation come with the `failedValidationRules`.
 
 `InputRules` are used to prevent incorrect input.
+
+## Example Project
+
+[ExampleApp](https://github.com/maxial/FormView/tree/main/ExampleApp) provides several more interesting use cases of **FormView**.
 
 ## Installation
 
