@@ -14,6 +14,7 @@ public struct FormField: View {
     
     private let id: String
     private var title: LocalizedStringKey
+    
     @ObservedObject private var validator: Validator<String, TextValidationRule>
     
     @FocusState private var isFocused: Bool

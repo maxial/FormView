@@ -10,6 +10,10 @@ import XCTest
 
 final class TextValidationRuleTests: XCTestCase {
     
+    func testIgnoreEmpty() throws {
+        try test(textRule: .digitsOnly, trueString: "", falseString: "1234 A")
+    }
+    
     func testNotEmpty() throws {
         try test(textRule: .notEmpty, trueString: "Not empty", falseString: "")
     }
