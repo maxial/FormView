@@ -19,6 +19,7 @@
 An easy-to-use library for working with a group of **TextFields**.
 
 - [Features](#features)
+- [Usage](#usage)
 - [Installation](#installation)
 - [License](#license)
 
@@ -27,6 +28,43 @@ An easy-to-use library for working with a group of **TextFields**.
 - Automatic transition between **TextFields** upon submission
 - Validation of **TextFields** based on specified rules
 - Prevention of incorrect input based on specified rules
+
+## Usage
+
+```swift
+struct ContentView: View {
+    
+    @State var email: String = ""
+    @State var phone: String = ""
+    
+    @State var emailFailedRules: [TextValidationRule] = []
+    
+    var body: some View {
+        FormView {
+            FormField(
+                "Email",
+                text: $email,
+                validationRules: [.email],
+                failedValidationRules: $emailFailedRules
+            )
+            if emailFailedRules.isEmpty == false {
+                Text("Email")
+                    .foregroundColor(.red)
+            }
+            FormField(
+                "Phone",
+                text: $phone,
+                validationRules: [.digitsOnly],
+                inputRules: [.digitsOnly]
+            )
+        }
+    }
+}
+```
+
+`ValidationRules` are used for automatic validation of text during input. All rules that have not passed the validation come with the `failedValidationRules`.
+
+`InputRules` are used to prevent incorrect input.
 
 ## Installation
 
