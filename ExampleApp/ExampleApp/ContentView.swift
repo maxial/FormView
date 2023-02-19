@@ -106,7 +106,6 @@ struct ContentView: View {
             }
             .padding(.horizontal, 12)
         }
-        
     }
 }
 
