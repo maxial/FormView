@@ -1,6 +1,6 @@
 # FormView
 
-<div align="center">
+<div align="leading">
   <a href="https://github.com/maxial/FormView/actions/workflows/.codecov.yml">
     <img src="https://github.com/maxial/FormView/actions/workflows/.codecov.yml/badge.svg?branch=main"/>
   </a>
@@ -8,13 +8,19 @@
     <img src="https://codecov.io/gh/maxial/FormView/branch/main/graph/badge.svg?token=QI9E6DH3YA"/>
   </a>
   <a href="https://swiftpackageindex.com/maxial/FormView" >
+    <img src="https://img.shields.io/badge/SPM-compatible-orange?style=flat"/>
+  </a>
+  <a href="https://swiftpackageindex.com/maxial/FormView" >
     <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fmaxial%2FFormView%2Fbadge%3Ftype%3Dswift-versions"/>
   </a>
   <a href="https://swiftpackageindex.com/maxial/FormView" >
     <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fmaxial%2FFormView%2Fbadge%3Ftype%3Dplatforms"/>
   </a>
+  <a href="https://swiftpackageindex.com/maxial/FormView" >
+    <img src="https://img.shields.io/badge/iOS-15.0+-orange?style=flat"/>
+  </a>
   <a href="https://github.com/maxial/FormView/blob/main/LICENSE" >
-    <img src="https://img.shields.io/github/license/maxial/FormView?color=FF4000"/>
+    <img src="https://img.shields.io/badge/license-MIT-orange?style=flat"/>
   </a>
 </div>
 <br>
