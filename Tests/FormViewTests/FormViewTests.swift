@@ -87,10 +87,10 @@ final class FormViewTests: XCTestCase {
     func testFocusNextField() throws {
         var fieldStates = [FieldState(id: "1", isFocused: false), FieldState(id: "2", isFocused: false)]
         
-        var nextFocusField = fieldStates.focusNextField()
+        var nextFocusField = fieldStates.focusNextField(currentFocusField: "")
         XCTAssertEqual(nextFocusField, "1")
         
-        nextFocusField = fieldStates.focusNextField()
+        nextFocusField = fieldStates.focusNextField(currentFocusField: "1")
         XCTAssertEqual(nextFocusField, "2")
     }
 }

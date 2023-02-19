@@ -15,8 +15,7 @@ public struct FormView<Content: View>: View {
     @ViewBuilder private let content: Content
     
     @State private var fieldStates: [FieldState] = []
-    
-    @State var focusField: String = ""
+    @State private var focusField: String = ""
     
     public init(
         alignment: HorizontalAlignment = .center,
@@ -38,7 +37,7 @@ public struct FormView<Content: View>: View {
             fieldStates = newValue
         }
         .onSubmit(of: .text) {
-            focusField = fieldStates.focusNextField()
+            focusField = fieldStates.focusNextField(currentFocusField: focusField)
         }
         .environment(\.focusField, focusField)
     }
