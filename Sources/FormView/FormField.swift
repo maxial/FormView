@@ -39,7 +39,7 @@ public struct FormField: View {
         TextField(title, text: $validator.value)
             .focused($isFocused)
             .onChange(of: validator.value) { [oldValue = validator.value] newValue in
-                if validator.checkInput(newValue: newValue).isEmpty {
+                if validator.validateInput(newValue: newValue).isEmpty {
                     validator.value = newValue
                 } else {
                     validator.value = oldValue

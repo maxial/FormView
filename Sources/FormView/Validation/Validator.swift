@@ -39,7 +39,7 @@ final class Validator<T: Hashable, V: ValidationRule>: ObservableObject where T 
         bindFailedValidationRules?.wrappedValue = failedValidationRules
     }
     
-    func checkInput(newValue: T? = nil) -> [V] {
+    func validateInput(newValue: T? = nil) -> [V] {
         return inputRules.filter { $0.check(value: newValue ?? value) == false }
     }
 }
