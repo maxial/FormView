@@ -30,7 +30,7 @@ An easy-to-use library for working with a group of **TextFields**.
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code.
 
-In Xcode 14 or later, select File > Add Packages... In the search bar, type
+In Xcode 14 or later, select `File > Add Packages...` In the search bar, type
 
 ```
 https://github.com/maxial/FormView
@@ -38,7 +38,7 @@ https://github.com/maxial/FormView
 
 Then proceed with installation.
 
-You can add FormView as a dependency to the `dependencies` value of your `Package.swift`:
+You can add **FormView** as a dependency to the `dependencies` value of your `Package.swift`:
 
 ```swift
 dependencies: [
