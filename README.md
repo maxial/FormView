@@ -18,6 +18,10 @@
 
 An easy-to-use library for working with a group of **TextFields**.
 
+- [Features](#features)
+- [Installation](#installation)
+- [License](#license)
+
 ## Features
 
 - Automatic transition between **TextFields** upon submission
@@ -45,3 +49,7 @@ dependencies: [
     .package(url: "https://github.com/maxial/FormView", from: "main"),
 ]
 ```
+
+## License
+
+FormView is released under the MIT license. [See LICENSE](https://github.com/maxial/FormView/blob/main/LICENSE) for details.
