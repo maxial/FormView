@@ -30,7 +30,7 @@ final class ValidatorTests: XCTestCase {
         XCTAssertEqual(failedValidationRules, [.digitsOnly])
         
         validator.value = "12345"
-        let failedInputRules = validator.checkInput()
+        let failedInputRules = validator.validateInput()
         XCTAssertEqual(failedInputRules, [.maxLength(4)])
     }
 }
