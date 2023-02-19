@@ -16,8 +16,32 @@
 </div>
 <br>
 
-**FormView** is a **SwiftUI** library that simplifies working with a group of **TextFields**. **FormView**:
+An easy-to-use library for working with a group of **TextFields**.
 
-* Performs automatic transition between **TextFields** upon submission
-* Automatically validates **TextFields** based on specified rules
-* Prevents incorrect input based on specified rules
+## Features
+
+- Automatic transition between **TextFields** upon submission
+- Validation of **TextFields** based on specified rules
+- Prevention of incorrect input based on specified rules
+
+## Installation
+
+### Swift Package Manager
+
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code.
+
+In Xcode 14 or later, select File > Add Packages... In the search bar, type
+
+```
+https://github.com/maxial/FormView
+``` 
+
+Then proceed with installation.
+
+You can add FormView as a dependency to the `dependencies` value of your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/maxial/FormView", from: "main"),
+]
+```
