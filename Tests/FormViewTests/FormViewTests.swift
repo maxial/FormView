@@ -39,7 +39,6 @@ final class FormViewTests: XCTestCase {
             
             try scrollView.callOnSubmit()
             try textField1.callOnChange(newValue: "New Focus Field", index: 1)
-            
             try textField1.callOnChange(newValue: "123")
             XCTAssertEqual(try textField1.input(), "123")
             
