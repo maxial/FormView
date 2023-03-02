@@ -25,7 +25,7 @@
 </div>
 <br>
 
-An easy-to-use library for working with a group of **TextFields**.
+An easy-to-use SwiftUI library for working with a group of **TextFields**.
 
 - [Features](#features)
 - [Usage](#usage)
