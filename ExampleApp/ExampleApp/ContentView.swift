@@ -37,7 +37,7 @@ struct ContentView: View {
         ZStack {
             Color(red: 245/255.0, green: 246/255.0, blue: 250/255.0)
                 .ignoresSafeArea()
-            FormView(alignment: .leading) {
+            ScrollView(.vertical) {
                 MyFormField(
                     "Company",
                     text: $companyName,
@@ -105,6 +105,7 @@ struct ContentView: View {
                 )
             }
             .padding(.horizontal, 12)
+            .formView()
         }
     }
 }

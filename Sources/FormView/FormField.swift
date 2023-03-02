@@ -51,6 +51,11 @@ public struct FormField: View {
             .onAppear {
                 validator.validate()
             }
-            .preference(key: FieldStatesKey.self, value: [FieldState(id: id, isFocused: isFocused)])
+            .preference(
+                key: FieldStatesKey.self,
+                value: [
+                    FieldState(id: id, isFocused: isFocused)
+                ]
+            )
     }
 }

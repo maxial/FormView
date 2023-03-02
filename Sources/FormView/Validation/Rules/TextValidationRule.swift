@@ -12,7 +12,7 @@ public enum TextValidationRule: ValidationRule {
     private enum Constants {
         
         static let predicateFormat = "SELF MATCHES %@"
-        static let specialCharactersRegex = ".*[^A-Za-z0-9 ].*"
+        static let specialCharactersRegex = ".*[^A-Za-zА-Яа-яё0-9 ].*"
         static let recurringPincodeRegex = "([0-9])\\1\\1\\1"
         static let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     }

@@ -18,16 +18,18 @@ final class FormViewTests: XCTestCase {
         var text2 = ""
         let sut = InspectionWrapperView(
             wrapped: FormView {
-                FormField(
-                    text: Binding(get: { text1 }, set: { text1 = $0 }),
-                    validationRules: [.digitsOnly],
-                    inputRules: [.digitsOnly]
-                )
-                .id(1)
-                FormField(
-                    text: Binding(get: { text2 }, set: { text2 = $0 })
-                )
-                .id(2)
+                ScrollView {
+                    FormField(
+                        text: Binding(get: { text1 }, set: { text1 = $0 }),
+                        validationRules: [.digitsOnly],
+                        inputRules: [.digitsOnly]
+                    )
+                    .id(1)
+                    FormField(
+                        text: Binding(get: { text2 }, set: { text2 = $0 })
+                    )
+                    .id(2)
+                }
             }
         )
         
@@ -55,16 +57,18 @@ final class FormViewTests: XCTestCase {
         var text2 = ""
         let sut = InspectionWrapperView(
             wrapped: FormView {
-                FormField(
-                    text: Binding(get: { text1 }, set: { text1 = $0 }),
-                    validationRules: [.digitsOnly],
-                    inputRules: [.digitsOnly]
-                )
-                .id(1)
-                FormField(
-                    text: Binding(get: { text2 }, set: { text2 = $0 })
-                )
-                .id(2)
+                ScrollView {
+                    FormField(
+                        text: Binding(get: { text1 }, set: { text1 = $0 }),
+                        validationRules: [.digitsOnly],
+                        inputRules: [.digitsOnly]
+                    )
+                    .id(1)
+                    FormField(
+                        text: Binding(get: { text2 }, set: { text2 = $0 })
+                    )
+                    .id(2)
+                }
             }
         )
         
