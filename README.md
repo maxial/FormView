@@ -51,22 +51,24 @@ struct ContentView: View {
     
     var body: some View {
         FormView {
-            FormField(
-                "Email",
-                text: $email,
-                validationRules: [.email],
-                failedValidationRules: $emailFailedRules
-            )
-            if emailFailedRules.isEmpty == false {
-                Text("Email")
-                    .foregroundColor(.red)
+            ScrollView(.vertical) {
+                FormField(
+                    "Email",
+                    text: $email,
+                    validationRules: [.email],
+                    failedValidationRules: $emailFailedRules
+                )
+                if emailFailedRules.isEmpty == false {
+                    Text("Email")
+                        .foregroundColor(.red)
+                }
+                FormField(
+                    "Phone",
+                    text: $phone,
+                    validationRules: [.digitsOnly],
+                    inputRules: [.digitsOnly]
+                )
             }
-            FormField(
-                "Phone",
-                text: $phone,
-                validationRules: [.digitsOnly],
-                inputRules: [.digitsOnly]
-            )
         }
     }
 }
@@ -75,6 +77,16 @@ struct ContentView: View {
 `ValidationRules` are used for automatic validation of text during input. All rules that have not passed the validation come with the `failedValidationRules`.
 
 `InputRules` are used to prevent incorrect input.
+
+You can also use a `.formView()` modifier instead of `FormView`:
+
+```swift
+ScrollView(.vertical) {
+    ...
+}
+.padding()
+.formView()
+```
 
 ## Example Project
 
