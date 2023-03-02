@@ -84,7 +84,6 @@ You can also use a `.formView()` modifier instead of `FormView`:
 ScrollView(.vertical) {
     ...
 }
-.padding()
 .formView()
 ```
 
